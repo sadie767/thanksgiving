@@ -1,22 +1,22 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    render :index
   end
 
   def show
     @list = List.find(params[:id])
-    render :show
   end
 
   def new
     @list = List.new
-    render :new
   end
 
   def create
     @list = List.new(list_params)
     if @list.save
+      # messing with alerts!
+      flash[:notice] = "Rebecca is going to learn to Whiteboard like a pro!"
+      flash[:alert] = "Dinosaurs are extinct!"
       redirect_to  lists_path
     else
       render :new
@@ -25,7 +25,6 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-    render :edit
   end
 
   def update
