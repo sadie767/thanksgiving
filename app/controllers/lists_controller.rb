@@ -1,4 +1,7 @@
 class ListsController < ApplicationController
+  before_action :authorize, only: [:index]
+
+
   def index
     @lists = List.all
   end
